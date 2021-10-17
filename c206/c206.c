@@ -171,7 +171,7 @@ void DLL_InsertLast(DLList *list, int data) {
  */
 void DLL_First(DLList *list) {
 
-    solved = FALSE; /* V případě řešení, smažte tento řádek! */
+    list->activeElement = list->firstElement;
 }
 
 /**
