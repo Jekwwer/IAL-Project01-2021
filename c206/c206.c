@@ -357,7 +357,29 @@ void DLL_InsertAfter(DLList *list, int data) {
  */
 void DLL_InsertBefore(DLList *list, int data) {
 
-    solved = FALSE; /* V případě řešení, smažte tento řádek! */
+    if (!DLL_IsActive(list)) {
+        return;
+    }
+
+    DLLElementPtr newElement = (DLLElementPtr) malloc(sizeof(DLLElementPtr));
+    if (newElement == NULL) {
+        DLL_Error();
+    }
+
+    newElement->data = data;
+    // vazby nového prvku s okolím
+    newElement->nextElement = list->activeElement;
+    newElement->previousElement = list->activeElement->previousElement;
+    // vazby okolí s novým prvkem
+    if (list->activeElement->previousElement != NULL) {
+        list->activeElement->previousElement->nextElement = newElement;
+    }
+    list->activeElement->previousElement = newElement;
+
+    // pokud aktivní prvek byl zároveň prvním
+    if (list->activeElement == list->firstElement) {
+        list->firstElement = newElement;
+    }
 }
 
 /**
