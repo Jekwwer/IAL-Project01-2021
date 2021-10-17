@@ -359,7 +359,9 @@ void DLL_GetValue(DLList *list, int *dataPtr) {
  */
 void DLL_SetValue(DLList *list, int data) {
 
-    solved = FALSE; /* V případě řešení, smažte tento řádek! */
+    if (list->activeElement != NULL) {
+        list->activeElement->data = data;
+    }
 }
 
 /**
