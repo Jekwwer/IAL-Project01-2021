@@ -397,7 +397,7 @@ void DLL_Previous(DLList *list) {
  */
 int DLL_IsActive(DLList *list) {
 
-    solved = FALSE; /* V případě řešení, smažte tento řádek! */
+    return (list->activeElement != NULL);
 }
 
 /* Konec c206.c */
