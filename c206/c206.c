@@ -140,7 +140,26 @@ void DLL_InsertFirst(DLList *list, int data) {
  */
 void DLL_InsertLast(DLList *list, int data) {
 
-    solved = FALSE; /* V případě řešení, smažte tento řádek! */
+    DLLElementPtr newElement = (DLLElementPtr) malloc(sizeof(struct DLLElement));
+    if (newElement == NULL) {
+        DLL_Error();
+        return;
+    }
+    newElement->data = data;
+
+    newElement->nextElement = NULL;
+    newElement->previousElement = list->lastElement;
+
+    //pokud už jsou v seznamu nějaké prvky
+    if (list->lastElement != NULL) {
+
+        list->lastElement->nextElement = newElement;
+    }
+    list->lastElement = newElement;
+
+    if (list->firstElement == NULL) {
+        list->firstElement = newElement;
+    }
 }
 
 /**
