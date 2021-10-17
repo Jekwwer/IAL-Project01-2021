@@ -79,7 +79,7 @@ void DLL_Error() {
  * @param list Ukazatel na strukturu dvousměrně vázaného seznamu
  */
 void DLL_Init(DLList *list) {
-    
+
     list->firstElement = NULL;
     list->activeElement = NULL;
     list->lastElement = NULL;
@@ -107,7 +107,27 @@ void DLL_Dispose(DLList *list) {
  */
 void DLL_InsertFirst(DLList *list, int data) {
 
-    solved = FALSE; /* V případě řešení, smažte tento řádek! */
+    DLLElementPtr newElement = (DLLElementPtr) malloc(sizeof(struct DLLElement));
+    if (newElement == NULL) {
+        DLL_Error();
+        return;
+    }
+    newElement->data = data;
+
+    newElement->previousElement = NULL;
+    newElement->nextElement = list->firstElement;
+
+    // Pokud už byl nějaký prvek v seznamu
+    if (list->firstElement != NULL) {
+        list->firstElement->previousElement = newElement;
+    }
+
+    list->firstElement = newElement;
+
+    // Pokud je to první prvek, tak je zároveň poslední
+    if (list->lastElement == NULL) {
+        list->lastElement = newElement;
+    }
 }
 
 /**
