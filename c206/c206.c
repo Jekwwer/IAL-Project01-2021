@@ -371,7 +371,9 @@ void DLL_SetValue(DLList *list, int data) {
  */
 void DLL_Next(DLList *list) {
 
-    solved = FALSE; /* V případě řešení, smažte tento řádek! */
+    if (list->activeElement != NULL) {
+        list->activeElement = list->activeElement->nextElement;
+    }
 }
 
 
