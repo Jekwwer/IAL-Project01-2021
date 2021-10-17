@@ -262,7 +262,28 @@ void DLL_DeleteFirst(DLList *list) {
  */
 void DLL_DeleteLast(DLList *list) {
 
-    solved = FALSE; /* V případě řešení, smažte tento řádek! */
+    // pokud seznam je prázdný, nic neděláme
+    if (list->lastElement == NULL) {
+        return;
+    } else {
+        // zrušení případné aktivity
+        if (list->activeElement == list->lastElement) {
+            list->activeElement = NULL;
+        }
+
+        DLLElementPtr element = list->lastElement;
+
+        // nebyl-li prvek zároveň prvním?
+        if (element == list->firstElement) {
+            list->firstElement = NULL;
+            list->lastElement = NULL;
+        } else {
+            list->lastElement = element->previousElement;
+            list->lastElement->nextElement = NULL;
+        }
+
+        free(element);
+    }
 }
 
 /**
