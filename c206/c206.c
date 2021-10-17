@@ -384,7 +384,9 @@ void DLL_Next(DLList *list) {
  */
 void DLL_Previous(DLList *list) {
 
-    solved = FALSE; /* V případě řešení, smažte tento řádek! */
+    if (list->activeElement != NULL) {
+        list->activeElement = list->activeElement->previousElement;
+    }
 }
 
 /**
