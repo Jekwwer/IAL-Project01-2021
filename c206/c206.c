@@ -228,7 +228,29 @@ void DLL_GetLast(DLList *list, int *dataPtr) {
  */
 void DLL_DeleteFirst(DLList *list) {
 
-    solved = FALSE; /* V případě řešení, smažte tento řádek! */
+    if (list->firstElement == NULL) {
+        return;
+    }
+
+    // zrušení připadné aktivity
+    if (list->activeElement == list->firstElement) {
+        list->activeElement = NULL;
+    }
+
+    DLLElementPtr element = list->firstElement;
+    list->firstElement = element->nextElement;
+    // pokud nový první element není NULL, měníme ukazatel na předchudce
+    if (list->firstElement != NULL) {
+        list->firstElement->previousElement = NULL;
+    }
+
+    // nebyl-li prvek zároveň posledním?
+    if (element == list->lastElement) {
+        list->firstElement = NULL;
+        list->lastElement = NULL;
+    }
+
+    free(element);
 }
 
 /**
