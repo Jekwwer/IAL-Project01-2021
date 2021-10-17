@@ -295,7 +295,25 @@ void DLL_DeleteLast(DLList *list) {
  */
 void DLL_DeleteAfter(DLList *list) {
 
-    solved = FALSE; /* V případě řešení, smažte tento řádek! */
+    if (!DLL_IsActive(list)) {
+        return;
+    }
+    if (list->activeElement->nextElement == NULL) {
+        return;
+    }
+
+    DLLElementPtr element = list->activeElement->nextElement;
+    list->activeElement->nextElement = element->nextElement;
+    //pokud prvek, který mažeme není poslední
+    if (element->nextElement != NULL) {
+        element->nextElement->previousElement = list->activeElement;
+    }
+    //pokud je poslední, měníme ukazatel na poslední prvek
+    else {
+        list->lastElement = list->activeElement;
+    }
+
+    free(element);
 }
 
 /**
