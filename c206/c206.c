@@ -321,7 +321,29 @@ void DLL_DeleteBefore(DLList *list) {
  */
 void DLL_InsertAfter(DLList *list, int data) {
 
-    solved = FALSE; /* V případě řešení, smažte tento řádek! */
+    if (!DLL_IsActive(list)) {
+        return;
+    }
+
+    DLLElementPtr newElement = (DLLElementPtr) malloc(sizeof(struct DLLElement));
+    if (newElement == NULL) {
+        DLL_Error();
+    }
+
+    newElement->data = data;
+    // vazba nového prvku s prvkem po aktivním prvku
+    newElement->nextElement = list->activeElement->nextElement;
+    if (list->activeElement->nextElement != NULL) {
+        list->activeElement->nextElement->previousElement = newElement;
+    }
+    // vazba nového prvku s aktivním prvkem
+    newElement->previousElement = list->activeElement;
+    list->activeElement->nextElement = newElement;
+
+    // pokud aktivní prvek byl zároveň posledním
+    if (list->activeElement == list->lastElement) {
+        list->lastElement = newElement;
+    }
 }
 
 /**
