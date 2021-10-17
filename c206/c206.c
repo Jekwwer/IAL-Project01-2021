@@ -183,7 +183,7 @@ void DLL_First(DLList *list) {
  */
 void DLL_Last(DLList *list) {
 
-    solved = FALSE; /* V případě řešení, smažte tento řádek! */
+    list->activeElement = list->lastElement;
 }
 
 /**
