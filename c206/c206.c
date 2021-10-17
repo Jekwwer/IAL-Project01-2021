@@ -195,7 +195,11 @@ void DLL_Last(DLList *list) {
  */
 void DLL_GetFirst(DLList *list, int *dataPtr) {
 
-    solved = FALSE; /* V případě řešení, smažte tento řádek! */
+    if (list->firstElement == NULL) {
+        DLL_Error();
+    } else {
+        *dataPtr = list->firstElement->data;
+    }
 }
 
 /**
