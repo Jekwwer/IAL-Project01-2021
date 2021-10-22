@@ -71,7 +71,11 @@ void Stack_Error(int error_code) {
  */
 void Stack_Init(Stack *stack) {
 
-    solved = FALSE; /* V případě řešení, smažte tento řádek! */
+    if (stack == NULL) {
+        Stack_Error(SERR_INIT);
+    } else {
+        stack->topIndex = -1;
+    }
 }
 
 /**
