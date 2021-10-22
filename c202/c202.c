@@ -106,7 +106,7 @@ int Stack_IsEmpty(const Stack *stack) {
  */
 int Stack_IsFull(const Stack *stack) {
 
-    solved = FALSE; /* V případě řešení, smažte tento řádek! */
+    return stack->topIndex == STACK_SIZE - 1;
 }
 
 /**
