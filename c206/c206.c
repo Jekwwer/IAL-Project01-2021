@@ -94,7 +94,10 @@ void DLL_Init(DLList *list) {
  */
 void DLL_Dispose(DLList *list) {
 
-    solved = FALSE; /* V případě řešení, smažte tento řádek! */
+    while (list->firstElement != NULL) {
+        DLL_DeleteFirst(list);
+    }
+    DLL_Init(list);
 }
 
 /**
