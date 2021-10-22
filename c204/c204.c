@@ -33,10 +33,11 @@
 **/
 
 #include "../c204/c204.h"
+#include <string.h>
 
 int solved;
 
-/**
+
 /**
  * Pomocná funkce untilLeftPar.
  * Slouží k vyprázdnění zásobníku až po levou závorku, přičemž levá závorka bude
@@ -129,8 +130,56 @@ void doOperation(Stack *stack, char c, char *postfixExpression,
  */
 char *infix2postfix(const char *infixExpression) {
 
-    solved = FALSE; /* V případě řešení smažte tento řádek! */
-    return NULL;    /* V případě řešení můžete smazat tento řádek. */
+    Stack *stack = (Stack *) malloc(sizeof(Stack));
+    Stack_Init(stack);
+
+    // alokujeme tolik pamětí kolik zabíra vstupní řetězec
+    char *result = (char *) malloc(sizeof(char) * MAX_LEN);
+    if (result == NULL) {
+        return NULL;
+    }
+
+    unsigned int i = 0;// pro procházení vstupem
+    unsigned int j = 0;// pro zapisování do výstupu
+
+    // Zpracování operandů
+    while (infixExpression[i] != '\0') {
+        if ((infixExpression[i] >= 'a' && infixExpression[i] <= 'z') ||
+            (infixExpression[i] >= 'A' && infixExpression[i] <= 'Z')) {
+
+            result[j] = infixExpression[i];
+            j++;
+        }
+
+        // Zpracování operatorů
+        if (infixExpression[i] == '+') {
+            Stack_Push(stack, infixExpression[i]);
+        }
+
+        // Zpracování omezovače (rovnítka)
+        if (infixExpression[i] == '=') {
+            while (!Stack_IsEmpty(stack)) {
+                char c;
+                Stack_Top(stack, &c);
+                Stack_Pop(stack);
+                result[j] = c;
+                j++;
+            }
+            result[j] = '=';
+            j++;
+            result[j] = '\0';
+            break;
+        }
+        i++;
+    }
+
+    // Uvolňujeme alokovaný zásobník
+    while (!Stack_IsEmpty(stack)) {
+        Stack_Pop(stack);
+    }
+    free(stack);
+
+    return result;
 }
 
 /* Konec c204.c */
