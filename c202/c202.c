@@ -155,7 +155,12 @@ void Stack_Pop(Stack *stack) {
  */
 void Stack_Push(Stack *stack, char data) {
 
-    solved = FALSE; /* V případě řešení, smažte tento řádek! */
+    if (Stack_IsFull(stack)) {
+        Stack_Error(SERR_PUSH);
+    } else {
+        stack->array[stack->topIndex + 1] = data;
+        stack->topIndex++;
+    }
 }
 
 /* Konec c202.c */
