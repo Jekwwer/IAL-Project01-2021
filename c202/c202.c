@@ -89,7 +89,7 @@ void Stack_Init(Stack *stack) {
  */
 int Stack_IsEmpty(const Stack *stack) {
 
-    solved = FALSE; /* V případě řešení, smažte tento řádek! */
+    return stack->topIndex == -1;
 }
 
 /**
