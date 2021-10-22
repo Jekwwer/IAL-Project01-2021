@@ -123,7 +123,11 @@ int Stack_IsFull(const Stack *stack) {
  */
 void Stack_Top(const Stack *stack, char *dataPtr) {
 
-    solved = FALSE; /* V případě řešení, smažte tento řádek! */
+    if (Stack_IsEmpty(stack)) {
+        Stack_Error(SERR_TOP);
+    }
+
+    *dataPtr = stack->array[stack->topIndex];
 }
 
 /**
