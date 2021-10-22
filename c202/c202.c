@@ -144,7 +144,11 @@ void Stack_Top(const Stack *stack, char *dataPtr) {
  */
 void Stack_Pop(Stack *stack) {
 
-    solved = FALSE; /* V případě řešení, smažte tento řádek! */
+    if (Stack_IsEmpty(stack)) {
+        return;
+    }
+
+    stack->topIndex--;
 }
 
 /**
