@@ -32,7 +32,7 @@
 **
 **/
 
-#include "../c204/c204.h"
+#include "c204.h"
 #include <string.h>
 
 int solved;
