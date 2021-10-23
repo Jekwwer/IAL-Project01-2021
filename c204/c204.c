@@ -145,14 +145,15 @@ char *infix2postfix(const char *infixExpression) {
     // Zpracování operandů
     while (infixExpression[i] != '\0') {
         if ((infixExpression[i] >= 'a' && infixExpression[i] <= 'z') ||
-            (infixExpression[i] >= 'A' && infixExpression[i] <= 'Z')) {
+            (infixExpression[i] >= 'A' && infixExpression[i] <= 'Z') ||
+            (infixExpression[i] >= '0' && infixExpression[i] <= '9')) {
 
             result[j] = infixExpression[i];
             j++;
         }
 
         // Zpracování operatorů
-        if (infixExpression[i] == '+') {
+        if (strchr("+-/*", infixExpression[i]) != NULL) {
             Stack_Push(stack, infixExpression[i]);
         }
 
