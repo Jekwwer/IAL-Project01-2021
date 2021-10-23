@@ -58,7 +58,18 @@ int solved;
  * postfixového výrazu
  */
 void untilLeftPar(Stack *stack, char *postfixExpression,
-                  unsigned *postfixExpressionLength) {}
+                  unsigned *postfixExpressionLength) {
+
+    char c = '\0';
+    // dokud ne dostaneme z vrcholu zásobníku levou závorku
+    while (Stack_Top(stack, &c), c != '(') {
+        // pridavej do výsledku prvky ze zásobníku
+        postfixExpression[*postfixExpressionLength] = c;
+        (*postfixExpressionLength)++;
+        Stack_Pop(stack);
+    };
+    Stack_Pop(stack);
+}
 
 /**
  * Pomocná funkce doOperation.
@@ -90,7 +101,7 @@ void doOperation(Stack *stack, char c, char *postfixExpression,
         (strchr("+-", top) != NULL && strchr("/*", c) != NULL)) {
 
         Stack_Push(stack, c);
-    // jinak vlož vrhol zásobníku do výsledného řetězce a zavolej funkci znova
+        // jinak vlož vrhol zásobníku do výsledného řetězce a zavolej funkci znova
     } else {
         postfixExpression[*postfixExpressionLength] = top;
         (*postfixExpressionLength)++;
@@ -177,15 +188,7 @@ char *infix2postfix(const char *infixExpression) {
         }
 
         if (infixExpression[i] == ')') {
-            char c = '\0';
-            Stack_Top(stack, &c);
-            Stack_Pop(stack);
-            while (c != '(') {
-                result[j] = c;
-                j++;
-                Stack_Top(stack, &c);
-                Stack_Pop(stack);
-            };
+            untilLeftPar(stack, result, &j);
         }
 
         // Zpracování operatorů
