@@ -152,6 +152,23 @@ char *infix2postfix(const char *infixExpression) {
             j++;
         }
 
+        // Zprocování závorek
+        if (infixExpression[i] == '(') {
+            Stack_Push(stack, infixExpression[i]);
+        }
+
+        if (infixExpression[i] == ')') {
+            char c = '\0';
+            Stack_Top(stack, &c);
+            Stack_Pop(stack);
+            while (c != '(') {
+                result[j] = c;
+                j++;
+                Stack_Top(stack, &c);
+                Stack_Pop(stack);
+            };
+        }
+
         // Zpracování operatorů
         if (strchr("+-/*", infixExpression[i]) != NULL) {
             Stack_Push(stack, infixExpression[i]);
