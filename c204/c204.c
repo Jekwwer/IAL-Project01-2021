@@ -78,7 +78,26 @@ void untilLeftPar(Stack *stack, char *postfixExpression,
  * postfixového výrazu
  */
 void doOperation(Stack *stack, char c, char *postfixExpression,
-                 unsigned *postfixExpressionLength) {}
+                 unsigned *postfixExpressionLength) {
+
+    char top;
+
+    // Pokud zásobnik je prázdný
+    if (Stack_IsEmpty(stack) ||
+        // nebo na vrcholu je levá závorka
+        (Stack_Top(stack, &top), top == '(') ||
+        // nebo na vrcholu je operator s nízší prioritou
+        (strchr("+-", top) != NULL && strchr("/*", c) != NULL)) {
+
+        Stack_Push(stack, c);
+    // jinak vlož vrhol zásobníku do výsledného řetězce a zavolej funkci znova
+    } else {
+        postfixExpression[*postfixExpressionLength] = top;
+        (*postfixExpressionLength)++;
+        Stack_Pop(stack);
+        doOperation(stack, c, postfixExpression, postfixExpressionLength);
+    }
+}
 
 /**
  * Konverzní funkce infix2postfix.
@@ -171,7 +190,7 @@ char *infix2postfix(const char *infixExpression) {
 
         // Zpracování operatorů
         if (strchr("+-/*", infixExpression[i]) != NULL) {
-            Stack_Push(stack, infixExpression[i]);
+            doOperation(stack, infixExpression[i], result, &j);
         }
 
         // Zpracování omezovače (rovnítka)
