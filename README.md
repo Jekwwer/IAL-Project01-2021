@@ -1,7 +1,7 @@
 # IAL-Project01-2021
 
-Solution for the 1st homework assignment from the subject _'IAL (Algorithms)'_ for the academic year 2021/22 at VUT FIT. \
-Řešení 1. domácího úkolu z předmětu _'IAL (Algoritmy)'_ pro akademický rok 2021/22 na VUT FIT.
+Solution for the 1st homework assignment from the course _'[IAL (Algorithms)](https://www.fit.vut.cz/study/course/268213/)'_ for the academic year 2021/22 at VUT FIT. \
+Řešení 1. domácího úkolu z předmětu _'[IAL (Algoritmy)](https://www.fit.vut.cz/study/course/268213/.cs)'_ pro akademický rok 2021/22 na VUT FIT.
 
 ## Task: Homework Assignment #1
 
