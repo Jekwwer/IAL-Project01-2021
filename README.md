@@ -1,50 +1,71 @@
-# IAL-Project01-2021
+# **IAL-Project01-2021**: 
+### Stack, Infix to Postfix Conversion & Double Linked List Implementation
 
-Solution for the 1st homework assignment from the course _'[IAL (Algorithms)](https://www.fit.vut.cz/study/course/268213/)'_ for the academic year 2021/22 at VUT FIT. \
-Řešení 1. domácího úkolu z předmětu _'[IAL (Algoritmy)](https://www.fit.vut.cz/study/course/268213/.cs)'_ pro akademický rok 2021/22 na VUT FIT.
+> **University**: [VUT FIT](https://www.fit.vut.cz/)
+>
+> **Course**: [IAL (Algorithms)](https://www.fit.vut.cz/study/course/268213/)
+>
+> **Academic Year**: 2021/22
 
-## Task: Homework Assignment #1
+---
 
-**Exercises:**
+## 📋 **Assignment Overview**
 
-1. **C202:** Implement a character stack using an array. (3 points)
-2. **C204:** Convert infix mathematical expressions to postfix format. (3 points)
-3. **C206:** Create a doubly linked linear list. (4 points)
+**Exercises**:
 
-**Instructions:**
+1. 📘 **C202**: Implement a character stack using an array. (3 points)
+2. 📘 **C204**: Convert infix mathematical expressions to postfix format. (3 points)
+3. 📘 **C206**: Create a doubly linked linear list. (4 points)
 
--   Complete the functions in `c202.c`, `c204.c`, and `c206.c`.
--   Submit the aforementioned files through IS FIT in UTF-8 encoding.
--   Check your implementations with provided testing applications (e.g., `c202-test.c`).
--   Compilation scripts are available: `make all`, `make clean`, `make run`.
--   **Do not** modify the function headers or pre-prepared header files.
+---
 
-**Grading:**
+## 🛠 **Instructions**
 
--   Gain 2 points per exercise if your implementation passes basic tests on the server `eva.fit.vutbr.cz`.
--   For correct outputs under advanced tests, earn the remainder of the points (1 each for C202 and C204, 2 for C206).
+-   Complete functions in the files: `c202.c`, `c204.c`, and `c206.c`.
+-   Submit files via **IS FIT** (University's Integrated System) in UTF-8 encoding.
+-   Test implementations using provided test applications, e.g., `c202-test.c`.
+-   Use provided compilation scripts:
+    -   Compile: `make all`
+    -   Clean: `make clean`
+    -   Run: `make run`
+-   ⚠️ **Important**: Do not modify pre-set function headers or associated header files.
 
-**Recommendations:**
+---
 
--   Consider enhancing the basic testing application to identify errors.
--   Focus on fully solving one or two exercises rather than partially attempting all if time is limited.
+## 📈 **Grading Criteria**
 
-**Important Notices:**
+-   2 points per exercise for passing basic tests on server `eva.fit.vutbr.cz`.
+-   Additional points for correct outputs in advanced tests:
+    -   1 point each for C202 and C204.
+    -   2 points for C206.
 
--   Assignments are auto-graded on `eva.fit.vutbr.cz`.
--   Non-compliance or modifications to the given task will result in zero points.
--   Non-compilable or infinite-looping exercises get zero points; exercises running over 15 seconds will be terminated.
--   Ensure individual work. Plagiarism or unauthorized collaboration may lead to disciplinary action.
+> **Note**: Non-adherence to the given specifications or modifications results in zero points. Non-compilable or infinite-looping solutions get zero points. Implementations running over 15 seconds will be terminated.
 
-## Evaluation
+---
 
-| Testing program    | Test results (successful/total) | Resulting points (earned/total) |
-| :----------------- | ------------------------------: | ------------------------------: |
-| c202-test          |                             9/9 |                             2/2 |
-| c202-advanced-test |                           19/19 |                             1/1 |
-| c204-test          |                           15/15 |                             2/2 |
-| c204-advanced-test |                           19/19 |                             1/1 |
-| c206-test          |                           18/18 |                             2/2 |
-| c206-advanced-test |                           58/58 |                             2/2 |
+## 💡 **Recommendations**
 
-Total points: **10/10**
+-   Enhance the basic test applications for more efficient error detection.
+-   If pressed for time, prioritize completely solving one or two exercises over half-attempting all.
+
+---
+
+## ⚠️ **Important Notices**
+
+-   Automatic grading takes place on `eva.fit.vutbr.cz`.
+-   Strictly adhere to individual work ethics. Plagiarism or unauthorized collaboration could result in severe disciplinary action.
+
+---
+
+## 📊 **Evaluation Results**
+
+| Testing Program        | Test Results | Points Earned |
+| :--------------------- | :----------: | :-----------: |
+| **c202-test**          |     9/9      |      2/2      |
+| **c202-advanced-test** |    19/19     |      1/1      |
+| **c204-test**          |    15/15     |      2/2      |
+| **c204-advanced-test** |    19/19     |      1/1      |
+| **c206-test**          |    18/18     |      2/2      |
+| **c206-advanced-test** |    58/58     |      2/2      |
+
+🌟 **Total Points**: 10/10
