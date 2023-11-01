@@ -1,13 +1,12 @@
-
 /* **************************** c202-test.c ********************************* */
-/*  Předmět: Algoritmy (IAL) - FIT VUT v Brně                                 */
-/*  Úkol: c202 - Zásobník znaků v poli                                        */
-/*  Vytvořil: Václav Topinka, září 2005                                       */
-/*  Úpravy: Kamil Jeřábek, září 2019                                          */
-/*          Daniel Dolejška, září 2021                                        */
+/*  Course: Algorithms (IAL) - FIT VUT in Brno                                */
+/*  Task: c202 - Stack of characters in an array                               */
+/*  Created by: Václav Topinka, September 2005                                 */
+/*  Modified by: Kamil Jeřábek, September 2019                                 */
+/*              Daniel Dolejška, September 2021                                */
 /* ************************************************************************** */
 
-/* Základní testy pro c202.c */
+/* Basic tests for c202.c */
 
 #include "c202.h"
 
@@ -20,10 +19,10 @@ int error_flag;
 int solved;
 
 /****************************************************************************** 
- * Speciální ošetření testovaných funkcí.                                     *
+ * Special handling of the tested functions.                                  *
  ******************************************************************************/
 
-/** Vytiskne obsah zásobníku. */
+/** Prints the content of the stack. */
 void stackPrint( Stack *stack ) {
 	if (solved)
 	{
@@ -41,64 +40,64 @@ void stackPrint( Stack *stack ) {
 	}
 }
 
-/** Zavolá funkci Stack_Init a v případě, že nebyla řešena, ohlásí to. */
+/** Calls the Stack_Init function and if it's not implemented, reports it. */
 void use_stack_init( Stack *stack ) {
 	solved = TRUE;
 	Stack_Init(stack);
 	if (!solved)
-		printf("[W] Funkce Stack_Init nebyla implementována.\n");
+		printf("[W] Function Stack_Init was not implemented.\n");
 }
 
-/** Zavolá funkci Stack_IsEmpty a vytiskne výsledek. */
+/** Calls the Stack_IsEmpty function and prints the result. */
 void use_stack_empty( Stack *stack ) {
 	solved = TRUE;
 	int i = Stack_IsEmpty(stack);
 	if (!solved)
-		printf("[W] Funkce Stack_IsEmpty nebyla implementována.\n");
+		printf("[W] Function Stack_IsEmpty was not implemented.\n");
 	else
 		printf("Stack_IsEmpty returned '%s'\n", i ? "TRUE" : "FALSE");
 }
 
-/** Zavolá funkci Stack_IsFull a vytiskne výsledek. */
+/** Calls the Stack_IsFull function and prints the result. */
 void use_stack_full( Stack *stack ) {
 	solved = TRUE;
 	int i = Stack_IsFull(stack);
 	if (!solved)
-		printf("[W] Funkce Stack_IsFull nebyla implementována.\n");
+		printf("[W] Function Stack_IsFull was not implemented.\n");
 	else
 		printf("Stack_IsFull returned '%s'\n", i ? "TRUE" : "FALSE");
 }
 
-/** Zavolá funkci Stack_Top a vytiskne výsledek. */
+/** Calls the Stack_Top function and prints the result. */
 void use_stack_top( Stack *stack ) {
 	solved = TRUE;
 	error_flag = 0;
 	char c;
 	Stack_Top(stack, &c);
 	if (!solved)
-		printf("[W] Funkce Stack_Top nebyla implementována.\n");
+		printf("[W] Function Stack_Top was not implemented.\n");
 	else if (!error_flag)
 		printf("Stack_Top returned '%c'\n", c);
 }
 
-/** Zavolá funkci Stack_Pop. */
+/** Calls the Stack_Pop function. */
 void use_stack_pop( Stack *stack ) {
 	solved = TRUE;
 	Stack_Pop(stack);
 	if (!solved)
-		printf("[W] Funkce Stack_Pop nebyla implementována.\n");
+		printf("[W] Function Stack_Pop was not implemented.\n");
 }
 
-/** Zavolá funkci Stack_Push. */
+/** Calls the Stack_Push function. */
 void use_stack_push( Stack *stack, char c ) {
 	solved = TRUE;
 	Stack_Push(stack, c);
 	if (!solved)
-		printf("[W] Funkce Stack_Push nebyla implementována.\n");
+		printf("[W] Function Stack_Push was not implemented.\n");
 }
 
 /****************************************************************************** 
- * Vlastní testování                                                          *
+ * Actual testing                                                             *
  ******************************************************************************/
 
 int main() {
@@ -165,4 +164,4 @@ int main() {
 	return (0);
 }
 
-/* Konec c202-test.c */
+/* End of c202-test.c */

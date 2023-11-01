@@ -1,35 +1,35 @@
 
 /* ******************************* c202.c *********************************** */
-/*  Předmět: Algoritmy (IAL) - FIT VUT v Brně                                 */
-/*  Úkol: c202 - Zásobník znaků v poli                                        */
-/*  Referenční implementace: Petr Přikryl, 1994                               */
-/*  Vytvořil: Václav Topinka, září 2005                                       */
-/*  Úpravy: Kamil Jeřábek, září 2019                                          */
-/*          Daniel Dolejška, září 2021                                        */
+/*  Course: Algorithms (IAL) - FIT VUT in Brno                                */
+/*  Assignment: c202 - Stack of characters in an array                         */
+/*  Reference implementation: Petr Přikryl, 1994                               */
+/*  Created by: Václav Topinka, September 2005                                */
+/*  Revisions: Kamil Jeřábek, September 2019                                  */
+/*             Daniel Dolejška, September 2021                                */
 /* ************************************************************************** */
 /*
-** Implementujte datový typ zásobník znaků ve statickém poli. ADT zásobník je
-** reprezentován záznamem typu Stack. Statické pole 'array' je indexováno
-** do maximální hodnoty STACK_SIZE. Položka záznamu 'topIndex' ukazuje na prvek
-** na vrcholu zásobníku. Prázdnému zásobníku odpovídá hodnota topIndex == -1,
-** zásobníku s jedním prvkem hodnota 0, atd. Přesnou definici typů neleznete
-** v hlavičkovém souboru c202.h.
+** Implement a character stack data type in a static array. The ADT stack is
+** represented by a record of type Stack. The static 'array' is indexed
+** up to the maximum value of STACK_SIZE. The 'topIndex' record item points to the item
+** on top of the stack. An empty stack corresponds to topIndex == -1,
+** a stack with one item has a value of 0, etc. The exact definition of types can be found
+** in the header file c202.h.
 **
-** Implementujte následující funkce:
+** Implement the following functions:
 **
-**    Stack_Init .... inicializace zásobníku
-**    Stack_IsEmpty ... test na prázdnost zásobníku
-**    Stack_IsFull .... test na zaplněnost zásobníku
-**    Stack_Top ..... přečte hodnotu z vrcholu zásobníku
-**    Stack_Pop ..... odstraní prvek z vrcholu zásobníku
-**    Stack_Push .... vloží prvku do zásobníku
+**    Stack_Init .... stack initialization
+**    Stack_IsEmpty . test for stack emptiness
+**    Stack_IsFull .. test for stack fullness
+**    Stack_Top ..... reads the value from the top of the stack
+**    Stack_Pop ..... removes an item from the top of the stack
+**    Stack_Push .... inserts an item into the stack
 **
-** Své řešení účelně komentujte!
+** Please comment on your solution purposefully!
 **
-** Terminologická poznámka: Jazyk C nepoužívá pojem procedura.
-** Proto zde používáme pojem funkce i pro operace, které by byly
-** v algoritmickém jazyce Pascalovského typu implemenovány jako procedury
-** (v jazyce C procedurám odpovídají funkce vracející typ void).
+** Terminological note: The C language does not use the term procedure.
+** Therefore, here we use the term function even for operations that would be
+** implemented as procedures in an algorithmic language of the Pascal type
+** (in C, procedures correspond to functions returning the void type).
 **
 **/
 
@@ -40,11 +40,11 @@ int error_flag;
 int solved;
 
 /**
- * Vytiskne upozornění, že došlo k chybě při práci se zásobníkem.
+ * Prints a warning that an error occurred while working with the stack.
  *
- * TUTO FUNKCI, PROSÍME, NEUPRAVUJTE!
+ * PLEASE DO NOT MODIFY THIS FUNCTION!
  *
- * @param error_code Interní identifikátor chyby
+ * @param error_code Internal error identifier
  */
 void Stack_Error(int error_code) {
     static const char *SERR_STRINGS[MAX_SERR + 1] = {
@@ -58,16 +58,16 @@ void Stack_Error(int error_code) {
 }
 
 /**
- * Provede inicializaci zásobníku - nastaví vrchol zásobníku.
- * Hodnoty ve statickém poli neupravujte - po inicializaci zásobníku
- * jsou nedefinované.
+ * Initializes the stack - sets the top of the stack.
+ * Do not modify the values in the static array - after initializing the stack
+ * they are undefined.
  *
- * V případě, že funkce dostane jako parametr stack == NULL,
- * volejte funkci Stack_Error(SERR_INIT).
- * U ostatních funkcí pro zjednodušení předpokládejte, že tato situace
- * nenastane.
+ * If the function receives stack == NULL as a parameter,
+ * call the function Stack_Error(SERR_INIT).
+ * For other functions, for simplification, assume that this situation
+ * will not occur.
  *
- * @param stack Ukazatel na strukturu zásobníku
+ * @param stack Pointer to the stack structure
  */
 void Stack_Init(Stack *stack) {
 
@@ -79,13 +79,13 @@ void Stack_Init(Stack *stack) {
 }
 
 /**
- * Vrací nenulovou hodnotu, je-li zásobník prázdný, jinak vrací hodnotu 0.
- * Funkci implementujte jako jediný příkaz.
- * Vyvarujte se zejména konstrukce typu "if ( cond ) b=true else b=false".
+ * Returns a non-zero value if the stack is empty, otherwise returns 0.
+ * Implement the function in a single command.
+ * Avoid constructs like "if (cond) b=true else b=false".
  *
- * @param stack Ukazatel na inicializovanou strukturu zásobníku
+ * @param stack Pointer to the initialized stack structure
  *
- * @returns Nenulovou hodnotu v případě, že je zásobník prázdný, jinak nulu
+ * @returns Non-zero value if the stack is empty, otherwise zero
  */
 int Stack_IsEmpty(const Stack *stack) {
 
@@ -93,16 +93,16 @@ int Stack_IsEmpty(const Stack *stack) {
 }
 
 /**
- * Vrací nenulovou hodnotu, je-li zásobník plný, jinak vrací hodnotu 0.
- * Dejte si zde pozor na častou programátorskou chybu "o jedničku" a dobře se
- * zamyslete, kdy je zásobník plný, jestliže může obsahovat nejvýše STACK_SIZE
- * prkvů a první prvek je vložen na pozici 0.
+ * Returns a non-zero value if the stack is full, otherwise returns 0.
+ * Be careful of the common "off-by-one" programming error here and think well
+ * about when the stack is considered full, given that it can contain at most 
+ * STACK_SIZE items and the first item is placed at position 0.
  *
- * Funkci implementujte jako jediný příkaz.
+ * Implement the function in a single command.
  *
- * @param stack Ukazatel na inicializovanou strukturu zásobníku
+ * @param stack Pointer to the initialized stack structure
  *
- * @returns Nenulovou hodnotu v případě, že je zásobník plný, jinak nulu
+ * @returns Non-zero value if the stack is full, otherwise zero
  */
 int Stack_IsFull(const Stack *stack) {
 
@@ -110,16 +110,16 @@ int Stack_IsFull(const Stack *stack) {
 }
 
 /**
- * Vrací znak z vrcholu zásobníku prostřednictvím parametru dataPtr.
- * Tato operace ale prvek z vrcholu zásobníku neodstraňuje.
- * Volání operace Top při prázdném zásobníku je nekorektní a ošetřete ho voláním
- * procedury Stack_Error(SERR_TOP).
+ * Returns the character from the top of the stack via the dataPtr parameter.
+ * However, this operation does not remove the top item from the stack.
+ * Calling the Top operation on an empty stack is incorrect and should be handled
+ * by calling the Stack_Error(SERR_TOP) function.
  *
- * Pro ověření, zda je zásobník prázdný, použijte dříve definovanou funkci
+ * To check if the stack is empty, use the previously defined function 
  * Stack_IsEmpty.
  *
- * @param stack Ukazatel na inicializovanou strukturu zásobníku
- * @param dataPtr Ukazatel na cílovou proměnnou
+ * @param stack Pointer to the initialized stack structure
+ * @param dataPtr Pointer to the destination variable
  */
 void Stack_Top(const Stack *stack, char *dataPtr) {
 
@@ -131,16 +131,15 @@ void Stack_Top(const Stack *stack, char *dataPtr) {
 }
 
 /**
- * Odstraní prvek z vrcholu zásobníku. Pro ověření, zda je zásobník prázdný,
- * použijte dříve definovanou funkci Stack_IsEmpty.
+ * Removes an item from the top of the stack. To check if the stack is empty, 
+ * use the previously defined Stack_IsEmpty function.
  *
- * Vyvolání operace Pop při prázdném zásobníku je sice podezřelé a může
- * signalizovat chybu v algoritmu, ve kterém je zásobník použit, ale funkci
- * pro ošetření chyby zde nevolejte (můžeme zásobník ponechat prázdný).
- * Spíše než volání chyby by se zde hodilo vypsat varování, což však pro
- * jednoduchost neděláme.
+ * Calling the Pop operation on an empty stack might indicate an error in the algorithm
+ * where the stack is used, but do not call the error-handling function here 
+ * (we can leave the stack empty). A warning might be more appropriate than 
+ * an error call here, but for simplicity, we won't use one.
  *
- * @param stack Ukazatel na inicializovanou strukturu zásobníku
+ * @param stack Pointer to the initialized stack structure
  */
 void Stack_Pop(Stack *stack) {
 
@@ -152,14 +151,14 @@ void Stack_Pop(Stack *stack) {
 }
 
 /**
- * Vloží znak na vrchol zásobníku. Pokus o vložení prvku do plného zásobníku
- * je nekorektní a ošetřete ho voláním procedury Stack_Error(SERR_PUSH).
+ * Inserts a character onto the top of the stack. Attempting to insert an item into 
+ * a full stack is incorrect and should be handled by calling the 
+ * Stack_Error(SERR_PUSH) function.
  *
- * Pro ověření, zda je zásobník plný, použijte dříve definovanou
- * funkci Stack_IsFull.
+ * To check if the stack is full, use the previously defined Stack_IsFull function.
  *
- * @param stack Ukazatel na inicializovanou strukturu zásobníku
- * @param data Znak k vložení
+ * @param stack Pointer to the initialized stack structure
+ * @param data Character to insert
  */
 void Stack_Push(Stack *stack, char data) {
 
@@ -171,4 +170,4 @@ void Stack_Push(Stack *stack, char data) {
     }
 }
 
-/* Konec c202.c */
+/* End of c202.c */

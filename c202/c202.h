@@ -1,14 +1,13 @@
-
 /* ******************************* c202.h *********************************** */
-/*  Předmět: Algoritmy (IAL) - FIT VUT v Brně                                 */
-/*  Úkol: c202 - Zásobník znaků v poli                                        */
-/*  Hlavičkový soubor pro c202.c                                              */
-/*  Vytvořil: Václav Topinka, září 2005                                       */
-/*  Úpravy: Kamil Jeřábek, září 2019                                          */
-/*          Daniel Dolejška, září 2021                                        */
+/*  Course: Algorithms (IAL) - FIT VUT in Brno                               */
+/*  Task: c202 - Character stack in an array                                  */
+/*  Header file for c202.c                                                    */
+/*  Created by: Václav Topinka, September 2005                                */
+/*  Modifications: Kamil Jeřábek, September 2019                              */
+/*                 Daniel Dolejška, September 2021                            */
 /* ************************************************************************** */
 
-/* TENTO SOUBOR, PROSÍME, NEUPRAVUJTE! */
+/* PLEASE DO NOT MODIFY THIS FILE! */
 
 #ifndef _STACK_H_
 #define _STACK_H_
@@ -19,38 +18,38 @@
 #define FALSE 0
 
 /**
- * Hodnota MAX_STACK udává skutečnou velikost statického pole pro uložení
- * hodnot zásobníku.
- * Při implementaci hodnotu MAX_STACK vůbec nepoužívejte.
+ * The MAX_STACK value specifies the actual size of the static array for storing
+ * stack values.
+ * When implementing, do not use the MAX_STACK value at all.
  */
 #define MAX_STACK 20
 
 /**
- * Při implementaci operací nad ADT zásobník předpokládejte, že velikost tohoto
- * pole je pouze STACK_SIZE.
- * Umožní to jednoduše měnit velikost zásobníku v průběhu testování.
+ * When implementing operations on the ADT stack, assume that the size of this
+ * array is only STACK_SIZE.
+ * This will make it easy to change the size of the stack during testing.
  */
 extern int STACK_SIZE;
 
-/** Globální proměnná - indikuje, zda operace volala chybu. */
+/** Global variable - indicates if an error was called during the operation. */
 extern int error_flag;
-/** Globální proměnná - indikuje, zda byla operace řešena. */
+/** Global variable - indicates if the operation was solved. */
 extern int solved;
 
-/** Celkový počet možných chyb. */
+/** Total number of possible errors. */
 #define MAX_SERR    3
-/** Chyba při Stack_Init. */
+/** Error during Stack_Init. */
 #define SERR_INIT   1
-/** Chyba při Stack_Push. */
+/** Error during Stack_Push. */
 #define SERR_PUSH   2
-/** Chyba při Stack_Top. */
+/** Error during Stack_Top. */
 #define SERR_TOP    3
 
-/** ADT zásobník implementovaný ve statickém poli. */
+/** ADT stack implemented in a static array. */
 typedef struct {
-	/** Pole pro uložení hodnot. */
+	/** Array for storing values. */
 	char array[MAX_STACK];
-	/** Index prvku na vrcholu zásobníku. */
+	/** Index of the top element on the stack. */
 	int topIndex;
 } Stack;
 
@@ -70,4 +69,4 @@ void Stack_Push( Stack *, char );
 
 #endif
 
-/* Konec hlavičkového souboru c202.h */
+/* End of header file c202.h */
