@@ -1,4 +1,5 @@
-# **IAL-Project01-2021**: 
+# **IAL-Project01-2021**:
+
 ### Stack, Infix to Postfix Conversion & Double Linked List Implementation
 
 > **University**: [VUT FIT](https://www.fit.vut.cz/)
@@ -63,9 +64,12 @@
 | :--------------------- | :----------: | :-----------: |
 | **c202-test**          |     9/9      |      2/2      |
 | **c202-advanced-test** |    19/19     |      1/1      |
+|                        |              |               |
 | **c204-test**          |    15/15     |      2/2      |
 | **c204-advanced-test** |    19/19     |      1/1      |
+|                        |              |               |
 | **c206-test**          |    18/18     |      2/2      |
 | **c206-advanced-test** |    58/58     |      2/2      |
-
-🌟 **Total Points**: 10/10
+|                        |              |               |
+| **Total Points:**      |              |   **10/10**   |
+|                        |              |  🟢🟢🟢🟢🟢   |
