@@ -1,11 +1,11 @@
 
-/*
- *  Předmět: Algoritmy (IAL) - FIT VUT v Brně
- *  Základní testy pro příklad c206.c (Dvousměrně vázaný lineární seznam)
- *  Vytvořil: Martin Tuček, září 2005
- *  Úprava: Kamil Jeřábek, září 2019
- *          Daniel Dolejška, září 2021
- */
+/* ***************************** c206-test.c ******************************** */
+/*  Course: Algorithms (IAL) - FIT VUT in Brno                                */
+/*  Task: c206 - Create a doubly linked linear list						      */
+/*  Created: Martin Tuček, September 2005				                      */
+/*  Modified by: Kamil Jeřábek, September 2019                                */
+/*               Daniel Dolejška, September 2021                              */
+/* ************************************************************************** */
 
 #include "c206.h"
 
@@ -15,7 +15,7 @@ int ElemValue = 1;
 int MaxListLength = 100;
 
 /*******************************************************************************
- * Pomocné funkce usnadňující testování vlastní implementace.
+ * Helper functions facilitating the testing of custom implementation.
  ******************************************************************************/
 
 void print_elements_of_list( DLList TL ) {
@@ -26,7 +26,7 @@ void print_elements_of_list( DLList TL ) {
 	{
 		printf("\n \t%d", TempList.firstElement->data);
 		if ((TempList.firstElement == TL.activeElement) && (TL.activeElement != NULL))
-			printf("\t <= toto je aktivní prvek ");
+			printf("\t <= this is the active element ");
 		TempList.firstElement = TempList.firstElement->nextElement;
 		CurrListLength++;
 	}
@@ -40,7 +40,7 @@ int test_DLL_Init() {
 	DLL_Init(&TEMPLIST);
 	if (!solved)
 	{
-		printf("Operace List_Init nebyla implementována!\n");
+		printf("Operation List_Init was not implemented!\n");
 		return (FALSE);
 	}
 	else
@@ -55,7 +55,7 @@ int test_DLL_Dispose() {
 	DLL_Dispose(&TEMPLIST);
 	if (!solved)
 	{
-		printf("Operace DLL_Dispose nebyla implementována!\n");
+		printf("Operation DLL_Dispose was not implemented!\n");
 		return (FALSE);
 	}
 	else
@@ -70,7 +70,7 @@ int test_DLL_InsertFirst() {
 	DLL_InsertFirst(&TEMPLIST, ElemValue);
 	if (!solved)
 	{
-		printf("Operace DLL_InsertFirst nebyla implementována!\n");
+		printf("Operation DLL_InsertFirst was not implemented!\n");
 		return (FALSE);
 	}
 	else
@@ -85,7 +85,7 @@ int test_DLL_InsertLast() {
 	DLL_InsertLast(&TEMPLIST, ElemValue);
 	if (!solved)
 	{
-		printf("Operace DLL_InsertLast nebyla implementována!\n");
+		printf("Operation DLL_InsertLast was not implemented!\n");
 		return (FALSE);
 	}
 	else
@@ -100,7 +100,7 @@ int test_DLL_First() {
 	DLL_First(&TEMPLIST);
 	if (!solved)
 	{
-		printf("Operace DLL_First nebyla implementována!\n");
+		printf("Operation DLL_First was not implemented!\n");
 		return (FALSE);
 	}
 	else
@@ -115,7 +115,7 @@ int test_DLL_Last() {
 	DLL_Last(&TEMPLIST);
 	if (!solved)
 	{
-		printf("Operace DLL_Last nebyla implementována!\n");
+		printf("Operation DLL_Last was not implemented!\n");
 		return (FALSE);
 	}
 	else
@@ -131,20 +131,20 @@ int test_DLL_GetFirst() {
 	DLL_GetFirst(&TEMPLIST, &temp);
 	if (!solved)
 	{
-		printf("Operace DLL_GetFirst nebyla implementována!\n");
+		printf("Operation DLL_GetFirst was not implemented!\n");
 		return (FALSE);
 	}
 	else
 	{
 		if (error_flag)
 		{
-			printf("Operace DLL_GetFirst volala funkci DLL_Error.\n");
+			printf("Operation DLL_GetFirst called function DLL_Error.\n");
 			error_flag = FALSE;
 			return (FALSE);
 		}
 		else
 		{
-			printf("Operace DLL_GetFirst vrací obsah %d.\n", temp);
+			printf("Operation DLL_GetFirst returns content %d.\n", temp);
 			return (TRUE);
 		}
 	}
@@ -156,20 +156,20 @@ int test_DLL_GetLast() {
 	DLL_GetLast(&TEMPLIST, &temp);
 	if (!solved)
 	{
-		printf("Operace DLL_GetLast nebyla implementována!\n");
+		printf("Operation DLL_GetLast was not implemented!\n");
 		return (FALSE);
 	}
 	else
 	{
 		if (error_flag)
 		{
-			printf("Operace DLL_GetLast volala funkci DLL_Error.\n");
+			printf("Operation DLL_GetLast called function DLL_Error.\n");
 			error_flag = FALSE;
 			return (FALSE);
 		}
 		else
 		{
-			printf("Operace DLL_GetLast vrací obsah %d.\n", temp);
+			printf("Operation DLL_GetLast returns content %d.\n", temp);
 			return (TRUE);
 		}
 	}
@@ -180,7 +180,7 @@ int test_DLL_DeleteFirst() {
 	DLL_DeleteFirst(&TEMPLIST);
 	if (!solved)
 	{
-		printf("Operace DLL_DeleteFirst nebyla implementována!\n");
+		printf("Operation DLL_DeleteFirst was not implemented!\n");
 		return (FALSE);
 	}
 	else
@@ -195,7 +195,7 @@ int test_DLL_DeleteLast() {
 	DLL_DeleteLast(&TEMPLIST);
 	if (!solved)
 	{
-		printf("Operace DLL_DeleteLast nebyla implementována!\n");
+		printf("Operation DLL_DeleteLast was not implemented!\n");
 		return (FALSE);
 	}
 	else
@@ -210,7 +210,7 @@ int test_DLL_DeleteAfter() {
 	DLL_DeleteAfter(&TEMPLIST);
 	if (!solved)
 	{
-		printf("Operace DLL_DeleteAfter nebyla implementována!\n");
+		printf("Operation DLL_DeleteAfter was not implemented!\n");
 		return (FALSE);
 	}
 	else
@@ -225,7 +225,7 @@ int test_DLL_DeleteBefore() {
 	DLL_DeleteBefore(&TEMPLIST);
 	if (!solved)
 	{
-		printf("Operace DLL_DeleteBefore nebyla implementována!\n");
+		printf("Operation DLL_DeleteBefore was not implemented!\n");
 		return (FALSE);
 	}
 	else
@@ -240,7 +240,7 @@ int test_DLL_InsertAfter() {
 	DLL_InsertAfter(&TEMPLIST, ElemValue);
 	if (!solved)
 	{
-		printf("Operace DLL_InsertAfter nebyla implementována!\n");
+		printf("Operation DLL_InsertAfter was not implemented!\n");
 		return (FALSE);
 	}
 	else
@@ -255,7 +255,7 @@ int test_DLL_InsertBefore() {
 	DLL_InsertBefore(&TEMPLIST, ElemValue);
 	if (!solved)
 	{
-		printf("Operace DLL_InsertBefore nebyla implementována!\n");
+		printf("Operation DLL_InsertBefore was not implemented!\n");
 		return (FALSE);
 	}
 	else
@@ -272,20 +272,20 @@ int test_DLL_GetValue() {
 
 	if (!solved)
 	{
-		printf("Operace DLL_GetValue nebyla implementována!\n");
+		printf("Operation DLL_GetValue was not implemented!\n");
 		return (FALSE);
 	}
 	else
 	{
 		if (error_flag)
 		{
-			printf("Operace DLL_GetValue volala funkci DLL_Error.\n");
+			printf("Operation DLL_GetValue called function DLL_Error.\n");
 			error_flag = FALSE;
 			return (FALSE);
 		}
 		else
 		{
-			printf("Operace DLL_GetValue vrací obsah %d.\n", temp);
+			printf("Operation DLL_GetValue returns content %d.\n", temp);
 			return (TRUE);
 		}
 	}
@@ -296,7 +296,7 @@ int test_DLL_SetValue() {
 	DLL_SetValue(&TEMPLIST, ElemValue);
 	if (!solved)
 	{
-		printf("Operace DLL_SetValue nebyla implementována!\n");
+		printf("Operation DLL_SetValue was not implemented!\n");
 		return (FALSE);
 	}
 	else
@@ -311,7 +311,7 @@ int test_DLL_Next() {
 	DLL_Next(&TEMPLIST);
 	if (!solved)
 	{
-		printf("Operace DLL_Next nebyla implementována!\n");
+		printf("Operation DLL_Next was not implemented!\n");
 		return (FALSE);
 	}
 	else
@@ -326,7 +326,7 @@ int test_DLL_Previous() {
 	DLL_Previous(&TEMPLIST);
 	if (!solved)
 	{
-		printf("Operace DLL_Previous nebyla implementována!\n");
+		printf("Operation DLL_Previous was not implemented!\n");
 		return (FALSE);
 	}
 	else
@@ -341,26 +341,25 @@ int test_DLL_IsActive() {
 	int tmp = DLL_IsActive(&TEMPLIST);
 	if (!solved)
 	{
-		printf("Operace DLL_IsActive nebyla implementována!\n");
+		printf("Operation DLL_IsActive was not implemented!\n");
 		return (FALSE);
 	}
 	else
 	{
 		if (tmp)
-			printf("Operace DLL_IsActive vrací hodnotu true.\n");
+			printf("Operation DLL_IsActive returns value true.\n");
 		else
-			printf("Operace DLL_IsActive vrací hodnotu false.\n");
+			printf("Operation DLL_IsActive returns value false.\n");
 		return (TRUE);
 	}
 }
 
 /*******************************************************************************
- * ZÁKLADNÍ TESTY
- * -------------- 
- * Za jejich úspěšné projítí získá student první část bodů za příklad.
- * Při hodnocení však budou použity rozšířené testy, které se zaměří
- * i na okrajové situace. Doporučujeme proto, aby si každý student
- * zkusitl tyto základní testy rozšířit o další zajímavé situace.
+ * BASIC TESTS
+ * ---------- 
+ * By successfully passing these tests, the student will earn the first set of points for the assignment.
+ * However, during grading, extended tests will be used, which will also focus on edge cases. 
+ * Therefore, it is recommended that each student tries to expand these basic tests with other interesting scenarios.
  *  
  ******************************************************************************/
 
@@ -369,12 +368,12 @@ int main() {
 	printf("---------------------------------------\n");
 
 	printf("\n[TEST01]\n");
-	printf("Inicializace seznamu\n");
+	printf("List initialization\n");
 	printf("~~~~~~~~~~~~~~~~~~~~\n");
 	test_DLL_Init();
 
 	printf("\n[TEST02]\n");
-	printf("Zavoláme 2x operaci DLL_InsertFirst a 2x operaci DLL_InsertLast.\n");
+	printf("We will call the DLL_InsertFirst operation 2 times and the DLL_InsertLast operation 2 times.\n");
 	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 	ElemValue = 1;
 	test_DLL_InsertFirst();
@@ -386,24 +385,24 @@ int main() {
 	test_DLL_InsertLast();
 
 	printf("\n[TEST03]\n");
-	printf("Otestujeme funkci DLL_First při neaktivním seznamu a funkci DLL_IsActive.\n");
+	printf("We will test the DLL_First function with an inactive list and the DLL_IsActive function.\n");
 	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 	test_DLL_First();
 	test_DLL_IsActive();
 
 	printf("\n[TEST04]\n");
-	printf("Otestujeme funkci DLL_Last.\n");
+	printf("We will test the DLL_Last function.\n");
 	printf("~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 	test_DLL_Last();
 	test_DLL_IsActive();
 
 	printf("\n[TEST05]\n");
-	printf("Test funkce DLL_GetValue při aktivitě na posledním prvku\n");
+	printf("Test the DLL_GetValue function with activity on the last item\n");
 	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 	test_DLL_GetValue();
 
 	printf("\n[TEST06]\n");
-	printf("Test funkce DLL_Previous -- voláme 3x, aktivita zůstane na prvním prvku.\n");
+	printf("Test the DLL_Previous function - we will call it 3 times, activity will remain on the first item.\n");
 	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 	test_DLL_Previous();
 	test_DLL_Previous();
@@ -411,7 +410,7 @@ int main() {
 	test_DLL_IsActive();
 
 	printf("\n[TEST07]\n");
-	printf("Aktualizujeme obsah aktivního prvku.\n");
+	printf("Update the content of the active item.\n");
 	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 	ElemValue = 5;
 	test_DLL_SetValue();
@@ -419,7 +418,7 @@ int main() {
 	test_DLL_GetValue();
 
 	printf("\n[TEST08]\n");
-	printf("Test funkce DLL_Next -- voláme 3x, aktivita zůstane na posledním prvku.\n");
+	printf("Test the DLL_Next function - we will call it 3 times, activity will remain on the last item.\n");
 	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 	test_DLL_Next();
 	test_DLL_Next();
@@ -427,60 +426,60 @@ int main() {
 	test_DLL_IsActive();
 
 	printf("\n[TEST09]\n");
-	printf("Provedeme ještě jednou DLL_Next - aktivita se ztratí.\n");
+	printf("We will perform DLL_Next once more - activity will be lost.\n");
 	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 	test_DLL_Next();
 	test_DLL_IsActive();
 
 	printf("\n[TEST10]\n");
-	printf("Nastavíme aktivitu na začátek a pak ji zrušíme operací DLL_Previous.\n");
+	printf("We will set activity to the beginning and then cancel it with the DLL_Previous operation.\n");
 	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 	test_DLL_First();
 	test_DLL_Previous();
 	test_DLL_IsActive();
 
 	printf("\n[TEST11]\n");
-	printf("Pokus o DLL_GetValue při neaktivním seznamu => ošetřená chyba.\n");
+	printf("Attempt to use DLL_GetValue with an inactive list => handled error.\n");
 	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 	test_DLL_GetValue();
 
 	printf("\n[TEST12]\n");
-	printf("Použití operace DLL_GetFirst při neaktivním seznamu\n");
+	printf("Use the DLL_GetFirst operation with an inactive list\n");
 	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 	test_DLL_GetFirst();
 
 	printf("\n[TEST13]\n");
-	printf("Použití operace DLL_GetLast při neaktivním seznamu\n");
+	printf("Use the DLL_GetLast operation with an inactive list\n");
 	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 	test_DLL_GetLast();
 
 	printf("\n[TEST14]\n");
-	printf("Použití operace DLL_DeleteFirst při neaktivním seznamu\n");
+	printf("Use the DLL_DeleteFirst operation with an inactive list\n");
 	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 	test_DLL_DeleteFirst();
 	test_DLL_IsActive();
 
 	printf("\n[TEST15]\n");
-	printf("Použití operace DLL_DeleteLast při neaktivním seznamu\n");
+	printf("Use the DLL_DeleteLast operation with an inactive list\n");
 	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 	test_DLL_DeleteLast();
 	test_DLL_IsActive();
 
 	printf("\n[TEST16]\n");
-	printf("Zkusíme DLL_DeleteAfter při aktivitě na posledním prvku.\n");
+	printf("We will try DLL_DeleteAfter with activity on the last item.\n");
 	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 	test_DLL_Last();
 	test_DLL_DeleteAfter();
 	test_DLL_IsActive();
 
 	printf("\n[TEST17]\n");
-	printf("Operace DLL_DeleteBefore nyní smaže první prvek.\n");
+	printf("The DLL_DeleteBefore operation will now delete the first item.\n");
 	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 	test_DLL_DeleteBefore();
 	test_DLL_IsActive();
 
 	printf("\n[TEST18]\n");
-	printf("Seznam nakonec zrušíme.\n");
+	printf("Finally, we will dispose of the list.\n");
 	printf("~~~~~~~~~~~~~~~~~~~~~~~\n");
 	test_DLL_Dispose();
 	test_DLL_IsActive();
@@ -489,3 +488,5 @@ int main() {
 
 	return (0);
 }
+
+/* End of c206-test.c */

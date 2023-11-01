@@ -1,13 +1,12 @@
-
 /* ******************************* c206.h *********************************** */
-/*  Předmět: Algoritmy (IAL) - FIT VUT v Brně                                 */
-/*  Úkol: c206 - Dvousměrně vázaný lineární seznam                            */
-/*  Vytvořil: Martin Tuček, září 2005                                         */
-/*  Upravil: Kamil Jeřábek, září 2020                                         */
-/*           Daniel Dolejška, září 2021                                       */
+/*  Course: Algorithms (IAL) - FIT VUT in Brno                               */
+/*  Task: c206 - Doubly Linked Linear List                                    */
+/*  Created by: Martin Tuček, September 2005                                  */
+/*  Modified by: Kamil Jeřábek, September 2020                                */
+/*              Daniel Dolejška, September 2021                               */
 /* ************************************************************************** */
 
-/* TENTO SOUBOR, PROSÍME, NEUPRAVUJTE! */
+/* PLEASE DO NOT MODIFY THIS FILE! */
 
 #include<stdio.h>
 #include<stdlib.h>
@@ -15,28 +14,28 @@
 #define FALSE 0
 #define TRUE 1
 
-/** Globální proměnná - příznak ošetření chyby. */
+/** Global variable - error handling flag. */
 extern int error_flag;
-/** Globální proměnná - indikuje, zda byla operace řešena. */
+/** Global variable - indicates if the operation was solved. */
 extern int solved;
 
-/** Prvek dvousměrně vázaného seznamu. */
+/** Element of the doubly linked list. */
 typedef struct DLLElement {
-	/** Užitečná data. */
+	/** Useful data. */
 	int data;
-	/** Ukazatel na předcházející prvek seznamu. */
+	/** Pointer to the previous element in the list. */
 	struct DLLElement *previousElement;
-	/** Ukazatel na následující prvek seznamu. */
+	/** Pointer to the next element in the list. */
 	struct DLLElement *nextElement;
 } *DLLElementPtr;
 
-/** Dvousměrně vázaný seznam. */
+/** Doubly linked list. */
 typedef struct {
-	/** Ukazatel na první prvek seznamu. */
+	/** Pointer to the first element in the list. */
 	DLLElementPtr firstElement;
-	/** Ukazatel na aktuální prvek seznamu. */
+	/** Pointer to the current element in the list. */
 	DLLElementPtr activeElement;
-	/** Ukazatel na posledni prvek seznamu. */
+	/** Pointer to the last element in the list. */
 	DLLElementPtr lastElement;
 } DLList;
 
@@ -78,4 +77,4 @@ void DLL_Previous( DLList * );
 
 int DLL_IsActive( DLList * );
 
-/* Konec hlavičkového souboru c206.h */
+/* End of header file c206.h */

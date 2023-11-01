@@ -2,13 +2,13 @@ C206 - Doubly Linked List - Basic Tests
 ---------------------------------------
 
 [TEST01]
-Inicializace seznamu
+List initialization
 ~~~~~~~~~~~~~~~~~~~~
 -----------------
 -----------------
 
 [TEST02]
-Zavoláme 2x operaci DLL_InsertFirst a 2x operaci DLL_InsertLast.
+We will call the DLL_InsertFirst operation 2 times and the DLL_InsertLast operation 2 times.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -----------------
  	1
@@ -30,92 +30,92 @@ Zavoláme 2x operaci DLL_InsertFirst a 2x operaci DLL_InsertLast.
 -----------------
 
 [TEST03]
-Otestujeme funkci DLL_First při neaktivním seznamu a funkci DLL_IsActive.
+We will test the DLL_First function with an inactive list and the DLL_IsActive function.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -----------------
- 	2	 <= toto je aktivní prvek 
+ 	2	 <= this is the active element 
  	1
  	3
  	4
 -----------------
-Operace DLL_IsActive vrací hodnotu true.
+Operation DLL_IsActive returns value true.
 
 [TEST04]
-Otestujeme funkci DLL_Last.
+We will test the DLL_Last function.
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 -----------------
  	2
  	1
  	3
- 	4	 <= toto je aktivní prvek 
+ 	4	 <= this is the active element 
 -----------------
-Operace DLL_IsActive vrací hodnotu true.
+Operation DLL_IsActive returns value true.
 
 [TEST05]
-Test funkce DLL_GetValue při aktivitě na posledním prvku
+Test the DLL_GetValue function with activity on the last item
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Operace DLL_GetValue vrací obsah 4.
+Operation DLL_GetValue returns content 4.
 
 [TEST06]
-Test funkce DLL_Previous -- voláme 3x, aktivita zůstane na prvním prvku.
+Test the DLL_Previous function - we will call it 3 times, activity will remain on the first item.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -----------------
  	2
  	1
- 	3	 <= toto je aktivní prvek 
+ 	3	 <= this is the active element 
  	4
 -----------------
 -----------------
  	2
- 	1	 <= toto je aktivní prvek 
+ 	1	 <= this is the active element 
  	3
  	4
 -----------------
 -----------------
- 	2	 <= toto je aktivní prvek 
+ 	2	 <= this is the active element 
  	1
  	3
  	4
 -----------------
-Operace DLL_IsActive vrací hodnotu true.
+Operation DLL_IsActive returns value true.
 
 [TEST07]
-Aktualizujeme obsah aktivního prvku.
+Update the content of the active item.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -----------------
- 	5	 <= toto je aktivní prvek 
+ 	5	 <= this is the active element 
  	1
  	3
  	4
 -----------------
-Operace DLL_IsActive vrací hodnotu true.
-Operace DLL_GetValue vrací obsah 5.
+Operation DLL_IsActive returns value true.
+Operation DLL_GetValue returns content 5.
 
 [TEST08]
-Test funkce DLL_Next -- voláme 3x, aktivita zůstane na posledním prvku.
+Test the DLL_Next function - we will call it 3 times, activity will remain on the last item.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -----------------
  	5
- 	1	 <= toto je aktivní prvek 
+ 	1	 <= this is the active element 
  	3
  	4
 -----------------
 -----------------
  	5
  	1
- 	3	 <= toto je aktivní prvek 
+ 	3	 <= this is the active element 
  	4
 -----------------
 -----------------
  	5
  	1
  	3
- 	4	 <= toto je aktivní prvek 
+ 	4	 <= this is the active element 
 -----------------
-Operace DLL_IsActive vrací hodnotu true.
+Operation DLL_IsActive returns value true.
 
 [TEST09]
-Provedeme ještě jednou DLL_Next - aktivita se ztratí.
+We will perform DLL_Next once more - activity will be lost.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -----------------
  	5
@@ -123,13 +123,13 @@ Provedeme ještě jednou DLL_Next - aktivita se ztratí.
  	3
  	4
 -----------------
-Operace DLL_IsActive vrací hodnotu false.
+Operation DLL_IsActive returns value false.
 
 [TEST10]
-Nastavíme aktivitu na začátek a pak ji zrušíme operací DLL_Previous.
+We will set activity to the beginning and then cancel it with the DLL_Previous operation.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -----------------
- 	5	 <= toto je aktivní prvek 
+ 	5	 <= this is the active element 
  	1
  	3
  	4
@@ -140,69 +140,69 @@ Nastavíme aktivitu na začátek a pak ji zrušíme operací DLL_Previous.
  	3
  	4
 -----------------
-Operace DLL_IsActive vrací hodnotu false.
+Operation DLL_IsActive returns value false.
 
 [TEST11]
-Pokus o DLL_GetValue při neaktivním seznamu => ošetřená chyba.
+Attempt to use DLL_GetValue with an inactive list => handled error.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 *ERROR* The program has performed an illegal operation.
-Operace DLL_GetValue volala funkci DLL_Error.
+Operation DLL_GetValue called function DLL_Error.
 
 [TEST12]
-Použití operace DLL_GetFirst při neaktivním seznamu
+Use the DLL_GetFirst operation with an inactive list
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Operace DLL_GetFirst vrací obsah 5.
+Operation DLL_GetFirst returns content 5.
 
 [TEST13]
-Použití operace DLL_GetLast při neaktivním seznamu
+Use the DLL_GetLast operation with an inactive list
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Operace DLL_GetLast vrací obsah 4.
+Operation DLL_GetLast returns content 4.
 
 [TEST14]
-Použití operace DLL_DeleteFirst při neaktivním seznamu
+Use the DLL_DeleteFirst operation with an inactive list
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -----------------
  	1
  	3
  	4
 -----------------
-Operace DLL_IsActive vrací hodnotu false.
+Operation DLL_IsActive returns value false.
 
 [TEST15]
-Použití operace DLL_DeleteLast při neaktivním seznamu
+Use the DLL_DeleteLast operation with an inactive list
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -----------------
  	1
  	3
 -----------------
-Operace DLL_IsActive vrací hodnotu false.
+Operation DLL_IsActive returns value false.
 
 [TEST16]
-Zkusíme DLL_DeleteAfter při aktivitě na posledním prvku.
+We will try DLL_DeleteAfter with activity on the last item.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -----------------
  	1
- 	3	 <= toto je aktivní prvek 
+ 	3	 <= this is the active element 
 -----------------
 -----------------
  	1
- 	3	 <= toto je aktivní prvek 
+ 	3	 <= this is the active element 
 -----------------
-Operace DLL_IsActive vrací hodnotu true.
+Operation DLL_IsActive returns value true.
 
 [TEST17]
-Operace DLL_DeleteBefore nyní smaže první prvek.
+The DLL_DeleteBefore operation will now delete the first item.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -----------------
- 	3	 <= toto je aktivní prvek 
+ 	3	 <= this is the active element 
 -----------------
-Operace DLL_IsActive vrací hodnotu true.
+Operation DLL_IsActive returns value true.
 
 [TEST18]
-Seznam nakonec zrušíme.
+Finally, we will dispose of the list.
 ~~~~~~~~~~~~~~~~~~~~~~~
 -----------------
 -----------------
-Operace DLL_IsActive vrací hodnotu false.
+Operation DLL_IsActive returns value false.
 
 ----- C206 - The End of Basic Tests -----
