@@ -1,14 +1,14 @@
 
 /* ***************************** c204-test.c ******************************** */
-/*  Předmět: Algoritmy (IAL) - FIT VUT v Brně                                 */
-/*  Úkol: c204 - Převod infixového výrazu na postfixový (s využitím c202)     */
-/*  Referenční implementace: Petr Přikryl, listopad 1994                      */
-/*  Přepis do jazyka C: Lukáš Maršík, prosinec 2012                           */
-/*  Upravil: Kamil Jeřábek, září 2019                                         */
-/*           Daniel Dolejška, září 2021                                       */
+/*  Course: Algorithms (IAL) - FIT VUT in Brno                               */
+/*  Task: c204 - Conversion of infix expression to postfix (using c202)       */
+/*  Reference implementation: Petr Přikryl, November 1994                     */
+/*  Conversion to C language: Lukáš Maršík, December 2012                     */
+/*  Modified by: Kamil Jeřábek, September 2019                                */
+/*               Daniel Dolejška, September 2021                              */
 /* ************************************************************************** */
 
-/* Základní testy pro c204.c */
+/* Basic tests for c204.c */
 
 #include "c204.h"
 
@@ -21,10 +21,10 @@ int solved;
 int error_flag;
 
 /****************************************************************************** 
- * Speciální ošetření testovaných funkcí.                                     *
+ * Special handling of the tested functions.                                  *
  ******************************************************************************/
 
-/** Covert infix expression and verify result */
+/** Convert infix expression and verify result */
 void convert_and_verify( char *infExpr, char *postExprOk ) {
 	/* Arguments assertation */
 	assert(infExpr != NULL);
@@ -50,27 +50,27 @@ void convert_and_verify( char *infExpr, char *postExprOk ) {
 	/* Test postfix string */
 	if (postExpr == NULL)
 	{
-		/* bad allocation or bad pointer returned */
+		/* Bad allocation or bad pointer returned */
 		printf("ERROR: NULL pointer returned.\n   You may have forgotten to return a correct pointer or\n   an error inside infix2postfix() occured.\n\n");
 	}
 	else
 	{
-		/* string is probably allocated */
+		/* String is probably allocated */
 		/* Try to find zero character stored for future test */
 		char lastChar = postExpr[MAX_LEN - 1];
-		/* just in case to have properly terminated string */
+		/* Just in case to have properly terminated string */
 		postExpr[MAX_LEN - 1] = 0;
 
 		if (strlen(postExpr) >= (MAX_LEN - 1) && lastChar != '0')
 		{
-			/* charater array doesn't contain zero character,
+			/* Charater array doesn't contain zero character,
 			 * this case probably never happens (zero character is often present in unitialized array) */
 			printf("ERROR: String appears to be too long (exceeds %d characters).\n", MAX_LEN - 1);
 			printf("   Haven't you forgotten to include zero character?\n\n");
 		}
 		else
 		{
-			/* string is OK in C language meaning */
+			/* String is OK in C language meaning */
 			/* Print converted expression and conversion result */
 			printf("Output postfix expression: %s\n", postExpr);
 			printf("Conversion result match:   ");
@@ -78,24 +78,24 @@ void convert_and_verify( char *infExpr, char *postExprOk ) {
 			/* Test strings match */
 			if (strcmp(postExpr, postExprOk) != 0)
 			{
-				/* conversion test failed */
+				/* Conversion test failed */
 				printf("FAILED\n\n");
 			}
 			else
 			{
-				/* conversion is finally OK */
+				/* Conversion is finally OK */
 				printf("OK\n\n");
 			}
 		}
 
-		/* free memory */
+		/* Free memory */
 		free(postExpr);
 	}
 }
 
 
 /****************************************************************************** 
- * Vlastní testování                                                          *
+ * Actual testing                                                             *
  ******************************************************************************/
 
 int main() {
@@ -167,4 +167,4 @@ int main() {
 	return (0);
 }
 
-/* Konec c204-test.c */
+/* End of c204-test.c */

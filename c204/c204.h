@@ -1,14 +1,13 @@
-
 /* ******************************* c204.h *********************************** */
-/*  Předmět: Algoritmy (IAL) - FIT VUT v Brně                                 */
-/*  Úkol: c204 - Převod infixového výrazu na postfixový (s využitím c202)     */
-/*  Referenční implementace: Petr Přikryl, listopad 1994                      */
-/*  Přepis do jazyka C: Lukáš Maršík, prosinec 2012                           */
-/*  Upravil: Kamil Jeřábek, září 2019                                         */
-/*           Daniel Dolejška, září 2021                                       */
+/*  Course: Algorithms (IAL) - FIT VUT in Brno                               */
+/*  Assignment: c204 - Conversion of infix expression to postfix (using c202) */
+/*  Reference implementation: Petr Přikryl, November 1994                     */
+/*  Rewritten in C language: Lukáš Maršík, December 2012                      */
+/*  Modified by: Kamil Jeřábek, September 2019                                */
+/*              Daniel Dolejška, September 2021                               */
 /* ************************************************************************** */
 
-/* TENTO SOUBOR, PROSÍME, NEUPRAVUJTE! */
+/* PLEASE DO NOT MODIFY THIS FILE! */
 
 #ifndef _INFIX2POSTFIX_H_
 #define _INFIX2POSTFIX_H_
@@ -19,17 +18,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/** Využívá příklad c202 - zásobník. */
+/** Utilizes the example c202 - stack. */
 #include "../c202/c202.h"
 
-/** Maximální délka řetězce výrazu. */
+/** Maximum length of the expression string. */
 #define MAX_LEN 64
 
-/** Globální proměnná - indikuje, zda byla operace řešena. */
+/** Global variable - indicates whether the operation was solved. */
 extern int solved;
 
 char *infix2postfix( const char *infixExpression );
 
 #endif
 
-/* Konec hlavičkového souboru c204.h */
+/* End of header file c204.h */

@@ -1,34 +1,34 @@
 
 /* ******************************* c204.c *********************************** */
-/*  Předmět: Algoritmy (IAL) - FIT VUT v Brně                                 */
-/*  Úkol: c204 - Převod infixového výrazu na postfixový (s využitím c202)     */
-/*  Referenční implementace: Petr Přikryl, listopad 1994                      */
-/*  Přepis do jazyka C: Lukáš Maršík, prosinec 2012                           */
-/*  Upravil: Kamil Jeřábek, září 2019                                         */
-/*           Daniel Dolejška, září 2021                                       */
+/*  Course: Algorithms (IAL) - FIT VUT in Brno                               */
+/*  Task: c204 - Conversion of infix expression to postfix (using c202)       */
+/*  Reference implementation: Petr Přikryl, November 1994                     */
+/*  Conversion to the C language: Lukáš Maršík, December 2012                 */
+/*  Edited by: Kamil Jeřábek, September 2019                                  */
+/*            Daniel Dolejška, September 2021                                */
 /* ************************************************************************** */
 /*
-** Implementujte proceduru pro převod infixového zápisu matematického výrazu
-** do postfixového tvaru. Pro převod využijte zásobník (Stack), který byl
-** implementován v rámci příkladu c202. Bez správného vyřešení příkladu c202
-** se o řešení tohoto příkladu nepokoušejte.
+** Implement the procedure for converting an infix notation of a mathematical expression
+** to a postfix form. For the conversion, use a stack (Stack) that was
+** implemented within the example c202. Do not attempt to solve this example
+** without correctly solving the example c202 first.
 **
-** Implementujte následující funkci:
+** Implement the following function:
 **
-**    infix2postfix ... konverzní funkce pro převod infixového výrazu
-**                      na postfixový
+**    infix2postfix ... conversion function to transform infix expression
+**                      to postfix
 **
-** Pro lepší přehlednost kódu implementujte následující pomocné funkce:
+** For better code clarity, implement the following helper functions:
 **
-**    untilLeftPar ... vyprázdnění zásobníku až po levou závorku
-**    doOperation .... zpracování operátoru konvertovaného výrazu
+**    untilLeftPar ... empty the stack until the left parenthesis
+**    doOperation .... process the operator of the converted expression
 **
-** Své řešení účelně komentujte.
+** Comment your solution purposefully.
 **
-** Terminologická poznámka: Jazyk C nepoužívá pojem procedura.
-** Proto zde používáme pojem funkce i pro operace, které by byly
-** v algoritmickém jazyce Pascalovského typu implemenovány jako procedury
-** (v jazyce C procedurám odpovídají funkce vracející typ void).
+** Terminological note: The C language does not use the term procedure.
+** Hence, we use the term function here for operations that would be
+** implemented as procedures in an algorithmic language of the Pascal type.
+** (In the C language, procedures correspond to functions returning the type void).
 **
 **/
 
@@ -39,31 +39,31 @@ int solved;
 
 
 /**
- * Pomocná funkce untilLeftPar.
- * Slouží k vyprázdnění zásobníku až po levou závorku, přičemž levá závorka bude
- * také odstraněna.
- * Pokud je zásobník prázdný, provádění funkce se ukončí.
+ * Helper function untilLeftPar.
+ * It serves to empty the stack until the left parenthesis, with the left parenthesis
+ * also being removed.
+ * If the stack is empty, the function's execution ends.
  *
- * Operátory odstraňované ze zásobníku postupně vkládejte do výstupního pole
- * znaků postfixExpression.
- * Délka převedeného výrazu a též ukazatel na první volné místo, na které se má
- * zapisovat, představuje parametr postfixExpressionLength.
+ * Insert the operators removed from the stack into the output character array
+ * postfixExpression in sequence.
+ * The length of the converted expression, and also the pointer to the first available spot
+ * for writing, is represented by the parameter postfixExpressionLength.
  *
- * Aby se minimalizoval počet přístupů ke struktuře zásobníku, můžete zde
- * nadeklarovat a používat pomocnou proměnnou typu char.
+ * To minimize the number of accesses to the stack structure, you can
+ * declare and use a helper variable of type char here.
  *
- * @param stack Ukazatel na inicializovanou strukturu zásobníku
- * @param postfixExpression Znakový řetězec obsahující výsledný postfixový výraz
- * @param postfixExpressionLength Ukazatel na aktuální délku výsledného
- * postfixového výrazu
+ * @param stack Pointer to the initialized stack structure
+ * @param postfixExpression Character string containing the resulting postfix expression
+ * @param postfixExpressionLength Pointer to the current length of the resulting
+ * postfix expression
  */
 void untilLeftPar(Stack *stack, char *postfixExpression,
                   unsigned *postfixExpressionLength) {
 
     char c = '\0';
-    // dokud ne dostaneme z vrcholu zásobníku levou závorku
+    // Until we get the left parenthesis from the top of the stack
     while (Stack_Top(stack, &c), c != '(') {
-        // pridavej do výsledku prvky ze zásobníku
+        // Add elements from the stack to the result
         postfixExpression[*postfixExpressionLength] = c;
         (*postfixExpressionLength)++;
         Stack_Pop(stack);
@@ -72,36 +72,36 @@ void untilLeftPar(Stack *stack, char *postfixExpression,
 }
 
 /**
- * Pomocná funkce doOperation.
- * Zpracuje operátor, který je předán parametrem c po načtení znaku ze
- * vstupního pole znaků.
+ * Helper function doOperation.
+ * Processes the operator passed by parameter c after reading the character from
+ * the input character array.
  *
- * Dle priority předaného operátoru a případně priority operátoru na vrcholu
- * zásobníku rozhodneme o dalším postupu.
- * Délka převedeného výrazu a taktéž ukazatel na první volné místo, do kterého
- * se má zapisovat, představuje parametr postfixExpressionLength, výstupním
- * polem znaků je opět postfixExpression.
+ * Based on the priority of the passed operator and possibly the priority of the operator at the top
+ * of the stack, we decide on the next steps.
+ * The length of the converted expression and also the pointer to the first free space, into which
+ * we should write, is represented by the parameter postfixExpressionLength. The output
+ * character array is again postfixExpression.
  *
- * @param stack Ukazatel na inicializovanou strukturu zásobníku
- * @param c Znak operátoru ve výrazu
- * @param postfixExpression Znakový řetězec obsahující výsledný postfixový výraz
- * @param postfixExpressionLength Ukazatel na aktuální délku výsledného
- * postfixového výrazu
+ * @param stack Pointer to the initialized stack structure
+ * @param c Character of the operator in the expression
+ * @param postfixExpression Character string containing the resulting postfix expression
+ * @param postfixExpressionLength Pointer to the current length of the resulting 
+ * postfix expression
  */
 void doOperation(Stack *stack, char c, char *postfixExpression,
                  unsigned *postfixExpressionLength) {
 
     char top;
 
-    // Pokud zásobnik je prázdný
+    // If the stack is empty
     if (Stack_IsEmpty(stack) ||
-        // nebo na vrcholu je levá závorka
+        // Or there's a left parenthesis at the top
         (Stack_Top(stack, &top), top == '(') ||
-        // nebo na vrcholu je operator s nízší prioritou
+        // Or there's an operator with lower priority at the top
         (strchr("+-", top) != NULL && strchr("/*", c) != NULL)) {
 
         Stack_Push(stack, c);
-        // jinak vlož vrhol zásobníku do výsledného řetězce a zavolej funkci znova
+        // Otherwise insert the top of the stack into the resulting string and call the function again
     } else {
         postfixExpression[*postfixExpressionLength] = top;
         (*postfixExpressionLength)++;
@@ -111,68 +111,67 @@ void doOperation(Stack *stack, char c, char *postfixExpression,
 }
 
 /**
- * Konverzní funkce infix2postfix.
- * Čte infixový výraz ze vstupního řetězce infixExpression a generuje
- * odpovídající postfixový výraz do výstupního řetězce (postup převodu hledejte
- * v přednáškách nebo ve studijní opoře).
- * Paměť pro výstupní řetězec (o velikosti MAX_LEN) je třeba alokovat. Volající
- * funkce, tedy příjemce konvertovaného řetězce, zajistí korektní uvolnění zde
- * alokované paměti.
+ * Conversion function infix2postfix.
+ * Reads an infix expression from the input string infixExpression and generates
+ * the corresponding postfix expression to the output string (find the conversion procedure
+ * in the lectures or study materials).
+ * Memory for the output string (of size MAX_LEN) needs to be allocated. The calling
+ * function, i.e., the receiver of the converted string, ensures the proper release of the 
+ * memory allocated here.
  *
- * Tvar výrazu:
- * 1. Výraz obsahuje operátory + - * / ve významu sčítání, odčítání,
- *    násobení a dělení. Sčítání má stejnou prioritu jako odčítání,
- *    násobení má stejnou prioritu jako dělení. Priorita násobení je
- *    větší než priorita sčítání. Všechny operátory jsou binární
- *    (neuvažujte unární mínus).
+ * Expression format:
+ * 1. The expression contains operators + - * / in the meaning of addition, subtraction,
+ *    multiplication, and division. Addition has the same priority as subtraction,
+ *    multiplication has the same priority as division. The priority of multiplication is
+ *    higher than the priority of addition. All operators are binary
+ *    (unary minus is not considered).
  *
- * 2. Hodnoty ve výrazu jsou reprezentovány jednoznakovými identifikátory
- *    a číslicemi - 0..9, a..z, A..Z (velikost písmen se rozlišuje).
+ * 2. Values in the expression are represented by single-character identifiers
+ *    and numbers - 0..9, a..z, A..Z (case-sensitive).
  *
- * 3. Ve výrazu může být použit předem neurčený počet dvojic kulatých
- *    závorek. Uvažujte, že vstupní výraz je zapsán správně (neošetřujte
- *    chybné zadání výrazu).
+ * 3. The expression can use an unspecified number of pairs of round
+ *    brackets. Assume that the input expression is written correctly (do not handle
+ *    incorrect expression input).
  *
- * 4. Každý korektně zapsaný výraz (infixový i postfixový) musí být uzavřen
- *    ukončovacím znakem '='.
+ * 4. Every correctly written expression (both infix and postfix) must be terminated
+ *    with the '=' character.
  *
- * 5. Při stejné prioritě operátorů se výraz vyhodnocuje zleva doprava.
+ * 5. With the same operator priority, the expression is evaluated from left to right.
  *
- * Poznámky k implementaci
- * -----------------------
- * Jako zásobník použijte zásobník znaků Stack implementovaný v příkladu c202.
- * Pro práci se zásobníkem pak používejte výhradně operace z jeho rozhraní.
+ * Implementation notes
+ * --------------------
+ * Use the character stack Stack implemented in the example c202.
+ * For stack operations, use exclusively operations from its interface.
  *
- * Při implementaci využijte pomocné funkce untilLeftPar a doOperation.
+ * When implementing, make use of the helper functions untilLeftPar and doOperation.
  *
- * Řetězcem (infixového a postfixového výrazu) je zde myšleno pole znaků typu
- * char, jenž je korektně ukončeno nulovým znakem dle zvyklostí jazyka C.
+ * The string (of infix and postfix expression) means a char array,
+ * which is correctly terminated with a null character according to C language conventions.
  *
- * Na vstupu očekávejte pouze korektně zapsané a ukončené výrazy. Jejich délka
- * nepřesáhne MAX_LEN-1 (MAX_LEN i s nulovým znakem) a tedy i výsledný výraz
- * by se měl vejít do alokovaného pole. Po alokaci dynamické paměti si vždycky
- * ověřte, že se alokace skutečně zdrařila. V případě chyby alokace vraťte
- * namísto řetězce konstantu NULL.
+ * Expect only correctly written and terminated expressions as input. Their length
+ * won't exceed MAX_LEN-1 (MAX_LEN including the null character) so even the resulting expression
+ * should fit into the allocated array. Always verify that memory allocation was successful 
+ * after dynamic memory allocation. In case of allocation error, return NULL instead of the string.
  *
- * @param infixExpression Znakový řetězec obsahující infixový výraz k převedení
+ * @param infixExpression Character string containing the infix expression to convert
  *
- * @returns Znakový řetězec obsahující výsledný postfixový výraz
+ * @returns Character string containing the resulting postfix expression
  */
 char *infix2postfix(const char *infixExpression) {
 
     Stack *stack = (Stack *) malloc(sizeof(Stack));
     Stack_Init(stack);
 
-    // alokujeme tolik pamětí kolik zabíra vstupní řetězec
+    // Allocate as much memory as the input string takes
     char *result = (char *) malloc(sizeof(char) * MAX_LEN);
     if (result == NULL) {
         return NULL;
     }
 
-    unsigned int i = 0;// pro procházení vstupem
-    unsigned int j = 0;// pro zapisování do výstupu
+    unsigned int i = 0;// For traversing the input
+    unsigned int j = 0;// For writing to the output
 
-    // Zpracování operandů
+    // Processing operands
     while (infixExpression[i] != '\0') {
         if ((infixExpression[i] >= 'a' && infixExpression[i] <= 'z') ||
             (infixExpression[i] >= 'A' && infixExpression[i] <= 'Z') ||
@@ -182,7 +181,7 @@ char *infix2postfix(const char *infixExpression) {
             j++;
         }
 
-        // Zprocování závorek
+        // Processing brackets
         if (infixExpression[i] == '(') {
             Stack_Push(stack, infixExpression[i]);
         }
@@ -191,12 +190,12 @@ char *infix2postfix(const char *infixExpression) {
             untilLeftPar(stack, result, &j);
         }
 
-        // Zpracování operatorů
+        // Processing operators
         if (strchr("+-/*", infixExpression[i]) != NULL) {
             doOperation(stack, infixExpression[i], result, &j);
         }
 
-        // Zpracování omezovače (rovnítka)
+        // Processing delimiter (equals sign)
         if (infixExpression[i] == '=') {
             while (!Stack_IsEmpty(stack)) {
                 char c;
@@ -213,7 +212,7 @@ char *infix2postfix(const char *infixExpression) {
         i++;
     }
 
-    // Uvolňujeme alokovaný zásobník
+    // Releasing the allocated stack
     while (!Stack_IsEmpty(stack)) {
         Stack_Pop(stack);
     }
@@ -222,4 +221,4 @@ char *infix2postfix(const char *infixExpression) {
     return result;
 }
 
-/* Konec c204.c */
+/* End of c204.c */
