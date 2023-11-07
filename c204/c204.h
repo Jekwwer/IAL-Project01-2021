@@ -1,10 +1,10 @@
 /* ******************************* c204.h *********************************** */
-/*  Course: Algorithms (IAL) - FIT VUT in Brno                               */
+/*  Course: Algorithms (IAL) - FIT VUT in Brno                                */
 /*  Assignment: c204 - Conversion of infix expression to postfix (using c202) */
 /*  Reference implementation: Petr Přikryl, November 1994                     */
 /*  Rewritten in C language: Lukáš Maršík, December 2012                      */
 /*  Modified by: Kamil Jeřábek, September 2019                                */
-/*              Daniel Dolejška, September 2021                               */
+/*               Daniel Dolejška, September 2021                              */
 /* ************************************************************************** */
 
 /* PLEASE DO NOT MODIFY THIS FILE! */
@@ -31,4 +31,4 @@ char *infix2postfix( const char *infixExpression );
 
 #endif
 
-/* End of header file c204.h */
+/* End of c204.h */

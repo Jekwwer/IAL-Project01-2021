@@ -1,6 +1,6 @@
 
 /* ***************************** c204-test.c ******************************** */
-/*  Course: Algorithms (IAL) - FIT VUT in Brno                               */
+/*  Course: Algorithms (IAL) - FIT VUT in Brno                                */
 /*  Task: c204 - Conversion of infix expression to postfix (using c202)       */
 /*  Reference implementation: Petr Přikryl, November 1994                     */
 /*  Conversion to C language: Lukáš Maršík, December 2012                     */
