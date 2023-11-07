@@ -69,4 +69,4 @@ void Stack_Push( Stack *, char );
 
 #endif
 
-/* End of header file c202.h */
+/* End of c202.h */

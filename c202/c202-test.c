@@ -1,9 +1,9 @@
 /* **************************** c202-test.c ********************************* */
 /*  Course: Algorithms (IAL) - FIT VUT in Brno                                */
-/*  Task: c202 - Stack of characters in an array                               */
-/*  Created by: Václav Topinka, September 2005                                 */
-/*  Modified by: Kamil Jeřábek, September 2019                                 */
-/*              Daniel Dolejška, September 2021                                */
+/*  Task: c202 - Stack of characters in an array                              */
+/*  Created by: Václav Topinka, September 2005                                */
+/*  Modified by: Kamil Jeřábek, September 2019                                */
+/*              Daniel Dolejška, September 2021                               */
 /* ************************************************************************** */
 
 /* Basic tests for c202.c */
