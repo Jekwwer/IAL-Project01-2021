@@ -1,5 +1,5 @@
 /* ******************************* c206.h *********************************** */
-/*  Course: Algorithms (IAL) - FIT VUT in Brno                               */
+/*  Course: Algorithms (IAL) - FIT VUT in Brno                                */
 /*  Task: c206 - Doubly Linked Linear List                                    */
 /*  Created by: Martin Tuček, September 2005                                  */
 /*  Modified by: Kamil Jeřábek, September 2020                                */
@@ -77,4 +77,4 @@ void DLL_Previous( DLList * );
 
 int DLL_IsActive( DLList * );
 
-/* End of header file c206.h */
+/* End of c206.h */
